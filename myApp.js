@@ -5,6 +5,7 @@ let app = express();
 const absPathIndex = __dirname + "/views/index.html" ;
 const absPathPublic = __dirname + "/public" ;
 const fileServerMiddle = express.static(absPathPublic) ;
+const absPathJson = __dirname + "/json/message.json"
 
 app.use("/public",fileServerMiddle) ;
 
@@ -13,9 +14,7 @@ app.get("/", (req, res) => {
 } ) ;
 
 app.get("/json", (req,res) => {
-    res.json({
-        "message" : "Hello JASON"
-    })
+    res.json(absPathJson) ;
 }) ;
 
 
