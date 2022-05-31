@@ -5,7 +5,7 @@ let app = express();
 absPathIndex = __dirname + "/views/index.html" ;
 absPathPublic = __dirname + "/public" ;
 const fileServerMiddle = express.static(absPathPublic) ;
-app.use("/public",absPathIndex) ;
+app.use("/public",fileServerMiddle) ;
 app.get("/", (req, res) => {
     res.sendFile(absPathIndex) ;
 } ) ;
