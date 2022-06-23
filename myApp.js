@@ -9,6 +9,7 @@ const fileServerMiddle = express.static(absPathPublic) ;
 const absPathJson = __dirname + "/json/message.json"
 
 app.use("/public",fileServerMiddle) ;
+app.use(logger)
 
 app.get("/", (req, res) => {
     res.sendFile(absPathIndex) ;
@@ -27,7 +28,11 @@ app.get("/json", (req,res) => {
         
 }) ;
 
-
+function logger(res, req, next) {
+    let outputString = req.method + " " + req.path + " - " + req.ip ;
+    console.log(outputString); 
+    next() ;   
+}
 
 
 
