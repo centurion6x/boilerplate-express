@@ -28,7 +28,7 @@ app.get("/json", (req,res) => {
         
 }) ;
 
-function logger(res, req, next) {
+function logger(req, res, next) {
     let outputString = req.method + " " + req.path + " - " + req.ip ;
     console.log(outputString); 
     next() ;   
