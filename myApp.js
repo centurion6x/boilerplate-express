@@ -28,6 +28,13 @@ app.get("/json", (req,res) => {
         
 }) ;
 
+app.get("/now", (req,res,next) => {
+    req.time = new Date().toString() ;
+    next() ;
+}, (req, res, next)=>{
+    res.send ({time : req.time});
+}) ;
+
 function logger(req, res, next) {
     let outputString = req.method + " " + req.path + " - " + req.ip ;
     console.log(outputString); 
