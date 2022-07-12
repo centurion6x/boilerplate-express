@@ -41,7 +41,7 @@ app.get("/:word/echo",(req,res,next) => {
 } ) ;
 
 app.route("/name").get( (req,res,next)=>{
-    let fullname = req.query.firstname + " " + req.query.lastname ;
+    let fullname = req.query.first + " " + req.query.last ;
     res.send({name:fullname}) ;
     next() ;
 })
