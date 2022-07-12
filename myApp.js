@@ -40,6 +40,12 @@ app.get("/:word/echo",(req,res,next) => {
     next() ;
 } ) ;
 
+app.route("/name").get( (req,res,next)=>{
+    let fullname = req.query.firstname + " " + req.query.lastname ;
+    res.send({name:fullname}) ;
+    next() ;
+})
+
 function logger(req, res, next) {
     let outputString = req.method + " " + req.path + " - " + req.ip ;
     console.log(outputString); 
