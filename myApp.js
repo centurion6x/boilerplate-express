@@ -48,7 +48,11 @@ app.route("/name").get( (req,res,next)=>{
     let fullname = req.query.first + " " + req.query.last ;
     res.send({name:fullname}) ;
     next() ;
-})
+}).post((req,res,next)=> {
+    let fullname = req.body.first + " " + req.body.last ;
+    res.send(fullname) ;
+    next() ;
+}) ;
 
 function logger(req, res, next) {
     let outputString = req.method + " " + req.path + " - " + req.ip ;
