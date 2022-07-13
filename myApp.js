@@ -1,6 +1,7 @@
 let dotEnv = require("dotenv").config() ;
 let express = require('express');
 let bodyParser = require("body-parser") ;
+const { json } = require("body-parser");
 let app = express();
 
 //console.log("Hello World");
@@ -45,15 +46,16 @@ app.get("/:word/echo",(req,res,next) => {
 } ) ;
 
 app.route("/name").get( (req,res,next)=>{
-    let fullname = req.query.first + " " + req.query.last ;
+    let nameObj = json.parse(req.body) ;
+    let fullname = req.body.first + " " + req.body.last ;
     res.send({name:fullname}) ;
     next() ;
 }).post((req,res,next)=> {
-    
+    /*
     let fullnameObj = JSON.parse(req.body) ;
     let fullname = fullnameObj.first + " " + fullnameObj.last ; 
-    
-    res.send(fullname) ;
+    */
+    res.send(req.body.first + " " + req.body.last) ;
     next() ;
 }) ;
 
