@@ -55,7 +55,7 @@ app.route("/name").get( (req,res,next)=>{
     let fullnameObj = JSON.parse(req.body) ;
     let fullname = fullnameObj.first + " " + fullnameObj.last ; 
     */
-    res.send(req.body.first + " " + req.body.last) ;
+    res.send({ name:req.body.first + " " + req.body.last}) ; //messy but works ;)
     next() ;
 }) ;
 
