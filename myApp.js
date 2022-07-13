@@ -49,7 +49,10 @@ app.route("/name").get( (req,res,next)=>{
     res.send({name:fullname}) ;
     next() ;
 }).post((req,res,next)=> {
-    let fullname = req.body.first + " " + req.body.last ;
+    
+    let fullnameObj = JSON.parse(req.body) ;
+    let fullname = fullnameObj.first + " " + fullnameObj.last ; 
+    
     res.send(fullname) ;
     next() ;
 }) ;
