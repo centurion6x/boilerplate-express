@@ -1,14 +1,18 @@
 let dotEnv = require("dotenv").config() ;
 let express = require('express');
+let bodyParser = require("body-parser") ;
 let app = express();
 
 //console.log("Hello World");
 const absPathIndex = __dirname + "/views/index.html" ;
 const absPathPublic = __dirname + "/public" ;
+const absPathJson = __dirname + "/json/message.json" ;
+
 const fileServerMiddle = express.static(absPathPublic) ;
-const absPathJson = __dirname + "/json/message.json"
+const urlEncodedMiddle = bodyParser.urlencoded({extended: false}) ;
 
 app.use("/public",fileServerMiddle) ;
+app.use("/name", urlEncodedMiddle) ;
 app.use(logger)
 
 app.get("/", (req, res) => {
